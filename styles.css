@@ -241,6 +241,18 @@ footer {
   flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
+#education-skills > div {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.skills-single-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 #education, #skills {
   flex: 1; /* Make both columns take equal width */
   background: white;
