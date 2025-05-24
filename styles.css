@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-  --primary-color: #3498db;
+  --primary-color: #0c8bdf;
   --secondary-color: #2c3e50;
   --text-color: #333;
   --background-color: #f9f9f9;
@@ -34,10 +34,20 @@ p {
 
 /* Header */
 header {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-  color: white;
-  padding: 40px 0;
-  text-align: center;
+  background: linear-gradient(120deg, #e0e7ff 0%, #f3f8ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #0077b5 0%, transparent 70%);
+  opacity: 0.12;
+  z-index: 0;
 }
 
 header h1 {
@@ -46,9 +56,11 @@ header h1 {
 }
 
 .subtitle {
-  font-size: 1.2em;
-  opacity: 0.9;
-  margin: 10px 0;
+  font-size: 1.1em;
+  color: #0077b5;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  animation: fadeInUp 1.2s;
 }
 
 .contact-info {
@@ -60,15 +72,62 @@ header h1 {
   margin: 0 15px;
 }
 
+.contact-info a {
+  color: #0077b5;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 6px;
+  transition: color 0.2s;
+}
+
+.contact-info a:hover {
+  color: #005983;
+  text-decoration: underline;
+}
+
+.contact-info i {
+  margin-right: 4px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  justify-content: center; /* Add this line to center the links */
+}
+
 .social-links a {
-  color: white;
-  font-size: 1.5em;
-  margin: 0 10px;
-  transition: opacity 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #f3f6fa;
+  color: #222;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  font-size: 1em;
+  border: 2px solid #0077b5; /* Add this line for a blue border */
 }
 
 .social-links a:hover {
-  opacity: 0.8;
+  background: #0077b5;
+  color: #fff;
+  border-color: #005983; /* Optional: darker border on hover */
+}
+
+.social-links a .fa-github {
+  color: #333;
+}
+
+.social-links a .fa-linkedin {
+  color: #0077b5;
+}
+
+.social-links a:hover .fa-github,
+.social-links a:hover .fa-linkedin {
+  color: #fff;
 }
 
 /* Navigation Bar */
@@ -76,6 +135,9 @@ header h1 {
   background: var(--secondary-color);
   padding: 10px 0;
   box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Make sure it stays above other content */
 }
 
 .navbar ul {
@@ -197,6 +259,55 @@ footer {
   background: #2980b9;
 }
 
+/* Recognition Cards */
+.recognition-card {
+  background: #f3f6fa;
+  border: 1px solid #e1e9f0;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+  text-align: center;
+  padding: 32px 16px 24px 16px;
+  position: relative;
+}
+
+.recognition-card:hover {
+  box-shadow: 0 4px 24px rgba(0, 119, 181, 0.12);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.recognition-content i {
+  margin-bottom: 12px;
+}
+
+.recognition-card h3 {
+  margin: 12px 0 8px 0;
+  font-size: 1.2em;
+  color: #0077b5;
+}
+
+.recognition-desc {
+  color: #444;
+  font-size: 1em;
+  margin-bottom: 18px;
+}
+
+.recognition-btn {
+  display: inline-block;
+  background: #0077b5;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+
+.recognition-card:hover .recognition-btn {
+  background: #005983;
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .contact-info p {
@@ -224,6 +335,12 @@ footer {
   section {
     padding: 15px; /* Reduce padding for smaller screens */
   }
+
+  .skills-grid div, .project-card {
+    padding: 10px; /* Reduce padding for smaller screens */
+    border-radius: 5px; /* Smaller border radius */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for smaller screens */
+  }
 }
 
 #education h3, #education p {
@@ -243,8 +360,8 @@ footer {
 
 #education-skills > div {
   width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 .skills-single-column {
@@ -353,6 +470,12 @@ h3 + h4 {
     font-size: 0.9em; /* Smaller button text */
     padding: 10px 15px; /* Adjust button padding */
   }
+
+  .skills-grid div, .project-card {
+    padding: 8px; /* Further reduce padding for very small screens */
+    border-radius: 3px; /* Even smaller border radius */
+    box-shadow: none; /* Remove shadow for simplicity */
+  }
 }
 
 img {
@@ -397,4 +520,80 @@ h1 {
   line-height: 1.5; /* Add spacing between lines for better readability */
   margin: 10px 0; /* Add spacing around the title */
   font-weight: bold; /* Make the title stand out */
+}
+
+.skills-columns {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  column-gap: 40px;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.skills-columns > li {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid; /* For Safari/older browsers */
+  page-break-inside: avoid;           /* For print */
+  list-style-type: none;
+  margin-bottom: 1.5em;
+}
+
+.skills-columns h3 {
+  margin-bottom: 0.5em;
+  margin-top: 0;
+  font-size: 1.1em;
+  color: var(--secondary-color);
+}
+
+.skills-columns ul {
+  list-style-type: disc;
+  list-style-position: outside;   /* Ensures bullet is outside the text block */
+  padding-left: 1.5em;            /* Adds space for the bullet */
+  margin-left: 0;                 /* Prevents double indentation */
+}
+
+.skills-columns ul li {
+  color: var(--text-color); /* Ensures bullet and text are dark */
+  margin-bottom: 0.5em;
+}
+
+.job h3,
+.job .job-title {
+  margin-bottom: 0.2em;
+  margin-top: 0;
+}
+
+#recognition .project-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#recognition .project-card {
+  width: 100%;
+  max-width: 10000px;   /* Wider on large screens */
+  min-width: 260px;   /* Prevents being too narrow */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  #recognition .project-card {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+header .container {
+  text-align: center;
+  padding: 36px 12px 28px 12px;
+  position: relative;
+  z-index: 1;
 }
