@@ -135,8 +135,6 @@ header h1 {
   background: var(--secondary-color);
   padding: 10px 0;
   box-shadow: var(--box-shadow);
-  position: sticky;
-  top: 0;
   z-index: 1000; /* Make sure it stays above other content */
 }
 
@@ -180,6 +178,10 @@ section {
   border-radius: var(--border-radius); /* Match the border-radius */
   box-shadow: var(--box-shadow); /* Match the shadow */
   box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+section h2 {
+  text-align: left !important;
 }
 
 h2 {
